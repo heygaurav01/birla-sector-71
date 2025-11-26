@@ -1,18 +1,21 @@
 import { useState } from 'react';
-import heroImage from '@/assets/hero-building.jpg';
-import interiorImage from '@/assets/interior-luxury.jpg';
-import amenitiesImage from '@/assets/amenities-overview.jpg';
+import g1 from '@/assets/g1.jpg';
+import g2 from '@/assets/g2.jpg';
+import g3 from '@/assets/g3.jpg';
+import g4 from '@/assets/g4.jpg';
+import g5 from '@/assets/g5.jpg';
+import g6 from '@/assets/g6.jpg';
 
 const Gallery = () => {
   const [selectedImage, setSelectedImage] = useState<string | null>(null);
 
   const images = [
-    { src: heroImage, alt: 'Building Exterior', category: 'Exterior' },
-    { src: interiorImage, alt: 'Luxury Interior', category: 'Interior' },
-    { src: amenitiesImage, alt: 'Amenities', category: 'Amenities' },
-    { src: heroImage, alt: 'Night View', category: 'Exterior' },
-    { src: interiorImage, alt: 'Living Room', category: 'Interior' },
-    { src: amenitiesImage, alt: 'Pool Area', category: 'Amenities' },
+    { src: g1, alt: 'Building Exterior View', category: 'Exterior' },
+    { src: g2, alt: 'Luxury Interiors', category: 'Interior' },
+    { src: g3, alt: 'Amenities & Facilities', category: 'Amenities' },
+    { src: g4, alt: 'Landscape & Gardens', category: 'Landscape' },
+    { src: g5, alt: 'Common Areas', category: 'Interior' },
+    { src: g6, alt: 'Recreational Spaces', category: 'Amenities' },
   ];
 
   return (

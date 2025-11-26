@@ -1,30 +1,44 @@
-import { MapPin, Car, Plane, GraduationCap, ShoppingBag } from 'lucide-react';
+import { MapPin, Building2, School, ShoppingBag, Hospital } from 'lucide-react';
+import locationMap from '@/assets/location-map.jpg';
 
 const Location = () => {
+  const connectivityDetails = [
+    { title: 'Cyber City', time: '11 mins' },
+    { title: 'Golf Pavilion', time: '04 mins' },
+    { title: 'Sector 42/43 Metro Station', time: '03 mins' },
+    { title: 'Shiv Nadar School', time: '06 mins' },
+    { title: 'Cafe Soul Garden', time: '11 mins' },
+    { title: 'Artemis Hospital', time: '13 mins' },
+    { title: 'IGI Airport', time: '30 mins' },
+    { title: 'Ambience Mall', time: '20 mins' },
+    { title: 'Golf Course Ext. Road', time: '05 mins' },
+    { title: 'Sohna Road', time: '05 mins' },
+  ];
+
   const nearbyPlaces = [
     {
-      icon: Car,
-      title: 'NH-8',
-      distance: '2 km',
-      description: 'Quick access to major highways',
-    },
-    {
-      icon: Plane,
-      title: 'IGI Airport',
-      distance: '20 km',
-      description: 'Easy connectivity to airport',
+      icon: Building2,
+      title: 'Cyber City',
+      distance: '11 mins',
+      description: 'Major business hub',
     },
     {
       icon: ShoppingBag,
-      title: 'Cyber Hub',
-      distance: '8 km',
-      description: 'Premium shopping & dining',
+      title: 'Ambience Mall',
+      distance: '20 mins',
+      description: 'Premium shopping destination',
     },
     {
-      icon: GraduationCap,
-      title: 'Top Schools',
-      distance: '3-5 km',
-      description: 'Best educational institutions',
+      icon: School,
+      title: 'Shiv Nadar School',
+      distance: '06 mins',
+      description: 'Top educational institution',
+    },
+    {
+      icon: Hospital,
+      title: 'Artemis Hospital',
+      distance: '13 mins',
+      description: 'World-class healthcare',
     },
   ];
 
@@ -59,24 +73,14 @@ const Location = () => {
 
             <div className="bg-secondary rounded-xl p-6">
               <h4 className="font-semibold text-lg mb-4">Connectivity Highlights</h4>
-              <ul className="space-y-3">
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span>
-                  <span className="text-muted-foreground">10 minutes to Golf Course Road</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span>
-                  <span className="text-muted-foreground">15 minutes to Cyber City</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span>
-                  <span className="text-muted-foreground">20 minutes to IGI Airport</span>
-                </li>
-                <li className="flex items-center gap-3">
-                  <span className="w-2 h-2 bg-primary rounded-full"></span>
-                  <span className="text-muted-foreground">Easy access to Delhi via NH-8</span>
-                </li>
-              </ul>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-6 gap-y-2">
+                {connectivityDetails.map((item, index) => (
+                  <div key={index} className="flex items-center justify-between py-2 border-b border-border/30">
+                    <span className="text-muted-foreground text-sm">{item.title}</span>
+                    <span className="text-primary font-semibold text-sm">{item.time}</span>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
@@ -98,17 +102,41 @@ const Location = () => {
             </div>
           </div>
 
-          <div className="animate-fade-in">
+          <div className="space-y-6 animate-fade-in">
+            {/* Google Maps Embed */}
             <div className="bg-secondary rounded-2xl p-4 shadow-lg">
-              <div className="aspect-video bg-muted rounded-xl flex items-center justify-center">
-                <div className="text-center">
-                  <MapPin className="w-16 h-16 text-primary mx-auto mb-4" />
-                  <p className="text-muted-foreground">Interactive Map</p>
-                  <p className="text-sm text-muted-foreground mt-2">
-                    Sector 71, Gurgaon, Haryana
-                  </p>
-                </div>
+              <div className="aspect-video rounded-xl overflow-hidden">
+                <iframe
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.0697788956844!2d77.06884731508198!3d28.43456898249145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d229b3b3b3b3b%3A0x3b3b3b3b3b3b3b3b!2sSector%2071%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  width="100%"
+                  height="100%"
+                  style={{ border: 0 }}
+                  allowFullScreen
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                  title="Birla Pravaah Location Map"
+                ></iframe>
               </div>
+              <div className="mt-4 text-center">
+                <a
+                  href="https://www.google.com/maps/place/Sector+71,+Gurugram,+Haryana/@28.43456898249145,77.06884731508198,17z"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-primary hover:text-accent transition-colors"
+                >
+                  <MapPin className="w-5 h-5" />
+                  <span className="font-semibold">Open in Google Maps</span>
+                </a>
+              </div>
+            </div>
+
+            {/* Location Map Image */}
+            <div className="bg-secondary rounded-2xl p-4 shadow-lg">
+              <img
+                src={locationMap}
+                alt="Birla Pravaah Location Connectivity Map"
+                className="w-full h-auto rounded-xl"
+              />
             </div>
           </div>
         </div>
