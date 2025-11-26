@@ -18,8 +18,8 @@ const Pricing = () => {
     },
     {
       type: '3.5 BHK',
-      size: '2350 Sq. Ft.',
-      price: '₹ 3.85 Cr*',
+      size: '2450 Sq. Ft.',
+      price: '₹ 4.10 Cr*',
       features: [
         '3 Bedrooms + Study + 3 Bathrooms',
         'Large Living & Dining Area',
