@@ -32,13 +32,7 @@ const Navigation = () => {
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-              <span className="text-primary-foreground font-bold text-xl font-serif">B</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="font-serif font-bold text-xl leading-tight">Birla Pravaah</span>
-              <span className="text-xs text-muted-foreground">By Birla Estate</span>
-            </div>
+            <img src="/logo.jpg" alt="Birla Pravaah Logo" className="h-20 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}

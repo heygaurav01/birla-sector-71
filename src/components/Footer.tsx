@@ -10,13 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-xl font-serif">B</span>
-              </div>
-              <div className="flex flex-col">
-                <span className="font-serif font-bold text-lg leading-tight">Birla Pravaah</span>
-                <span className="text-xs text-background/70">By Birla Estate</span>
-              </div>
+              <img src="/logo.jpg" alt="Birla Pravaah Logo" className="h-16 w-auto object-contain bg-white rounded-lg p-1" />
             </div>
             <p className="text-background/70 text-sm mb-4">
               Experience luxury living in the heart of Gurgaon. A masterpiece by Birla Estate.
