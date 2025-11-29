@@ -1,5 +1,6 @@
 import { Button } from '@/components/ui/button';
 import { Check } from 'lucide-react';
+import EnquiryModal from './EnquiryModal';
 
 const Pricing = () => {
   const plans = [
@@ -47,9 +48,8 @@ const Pricing = () => {
           {plans.map((plan, index) => (
             <div
               key={index}
-              className={`relative bg-background rounded-2xl p-8 shadow-lg animate-scale-in ${
-                plan.popular ? 'ring-2 ring-primary' : ''
-              }`}
+              className={`relative bg-background rounded-2xl p-8 shadow-lg animate-scale-in ${plan.popular ? 'ring-2 ring-primary' : ''
+                }`}
               style={{ animationDelay: `${index * 0.2}s` }}
             >
               {plan.popular && (
@@ -76,15 +76,16 @@ const Pricing = () => {
                 ))}
               </ul>
 
-              <Button
-                className={`w-full ${
-                  plan.popular ? 'bg-primary hover:bg-primary/90' : ''
-                }`}
-                variant={plan.popular ? 'default' : 'outline'}
-                size="lg"
-              >
-                Download Brochure
-              </Button>
+              <EnquiryModal title="Download Brochure" description="Fill the form to download the brochure">
+                <Button
+                  className={`w-full ${plan.popular ? 'bg-primary hover:bg-primary/90' : ''
+                    }`}
+                  variant={plan.popular ? 'default' : 'outline'}
+                  size="lg"
+                >
+                  Download Brochure
+                </Button>
+              </EnquiryModal>
             </div>
           ))}
         </div>
@@ -99,13 +100,15 @@ const Pricing = () => {
           <p className="text-lg mb-8 text-primary-foreground/80">
             Pay only 20% now and balance in 5 years. Limited period offer on select units.
           </p>
-          <Button
-            size="lg"
-            variant="secondary"
-            className="bg-background text-foreground hover:bg-background/90"
-          >
-            Schedule Site Visit
-          </Button>
+          <EnquiryModal title="Schedule Site Visit" description="Book your site visit today">
+            <Button
+              size="lg"
+              variant="secondary"
+              className="bg-background text-foreground hover:bg-background/90"
+            >
+              Schedule Site Visit
+            </Button>
+          </EnquiryModal>
         </div>
       </div>
     </section>

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { Button } from '@/components/ui/button';
-import { Menu, X, Phone } from 'lucide-react';
+import { Menu, X, Phone, MessageCircle } from 'lucide-react';
 
 const Navigation = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,14 +25,13 @@ const Navigation = () => {
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-background/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
-      }`}
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${isScrolled ? 'bg-background/95 backdrop-blur-md shadow-lg' : 'bg-transparent'
+        }`}
     >
       <div className="container mx-auto px-4 py-4">
         <div className="flex items-center justify-between">
           <div className="flex items-center space-x-2">
-            <img src="/logo.jpg" alt="Birla Pravaah Logo" className="h-20 w-auto object-contain" />
+            <img src="/logo.png" alt="Birla Pravaah Logo" className="h-20 w-auto object-contain" />
           </div>
 
           {/* Desktop Navigation */}
@@ -49,13 +48,22 @@ const Navigation = () => {
           </div>
 
           <div className="hidden md:flex items-center space-x-4">
-            <Button variant="outline" size="sm" className="gap-2">
-              <Phone className="w-4 h-4" />
-              Call Now
-            </Button>
-            <Button size="sm" className="bg-primary hover:bg-primary/90">
-              Enquire Now
-            </Button>
+            <a href="tel:+918200201202">
+              <Button variant="outline" size="sm" className="gap-2">
+                <Phone className="w-4 h-4" />
+                +91 8200 201 202
+              </Button>
+            </a>
+            <a
+              href="https://api.whatsapp.com/send/?phone=918200201202&text&type=phone_number&app_absent=0"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              <Button size="sm" className="bg-[#25D366] hover:bg-[#128C7E] text-white gap-2">
+                <MessageCircle className="w-4 h-4" />
+                WhatsApp
+              </Button>
+            </a>
           </div>
 
           {/* Mobile Menu Button */}
@@ -81,13 +89,23 @@ const Navigation = () => {
               </a>
             ))}
             <div className="flex flex-col space-y-2 pt-4">
-              <Button variant="outline" size="sm" className="gap-2 w-full">
-                <Phone className="w-4 h-4" />
-                Call Now
-              </Button>
-              <Button size="sm" className="bg-primary hover:bg-primary/90 w-full">
-                Enquire Now
-              </Button>
+              <a href="tel:+918200201202" className="w-full">
+                <Button variant="outline" size="sm" className="gap-2 w-full">
+                  <Phone className="w-4 h-4" />
+                  +91 8200 201 202
+                </Button>
+              </a>
+              <a
+                href="https://api.whatsapp.com/send/?phone=918200201202&text&type=phone_number&app_absent=0"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full"
+              >
+                <Button size="sm" className="bg-[#25D366] hover:bg-[#128C7E] text-white gap-2 w-full">
+                  <MessageCircle className="w-4 h-4" />
+                  WhatsApp
+                </Button>
+              </a>
             </div>
           </div>
         )}

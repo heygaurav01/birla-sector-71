@@ -5,9 +5,11 @@ import { Textarea } from '@/components/ui/textarea';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
 import { Phone, Mail, MapPin } from 'lucide-react';
+import { useNavigate } from 'react-router-dom';
 
 const Contact = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,13 +17,34 @@ const Contact = () => {
     message: '',
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Message sent successfully!",
-      description: "Our team will get back to you within 24 hours.",
-    });
-    setFormData({ name: '', email: '', phone: '', message: '' });
+    try {
+      const response = await fetch('https://api.elaris.ltd/api/rrequest', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(formData),
+      });
+
+      if (response.ok) {
+        toast({
+          title: "Message sent successfully!",
+          description: "Our team will get back to you within 24 hours.",
+        });
+        setFormData({ name: '', email: '', phone: '', message: '' });
+        navigate('/thank-you.html');
+      } else {
+        throw new Error('Failed to submit form');
+      }
+    } catch (error) {
+      toast({
+        title: "Error",
+        description: "Something went wrong. Please try again later.",
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -54,8 +77,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-semibold mb-1">Phone</p>
-                  <p className="text-muted-foreground">+91 98765 43210</p>
-                  <p className="text-muted-foreground">+91 98765 43211</p>
+                  <p className="text-muted-foreground">+91 8200 801 802</p>
+                  {/* <p className="text-muted-foreground">+91 98765 43211</p> */}
                 </div>
               </div>
 
@@ -65,8 +88,8 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-semibold mb-1">Email</p>
-                  <p className="text-muted-foreground">sales@birlapravaah.com</p>
-                  <p className="text-muted-foreground">info@birlapravaah.com</p>
+                  <p className="text-muted-foreground">contact@elaris.consulting</p>
+                  {/* <p className="text-muted-foreground">contact@elaris.consulting</p> */}
                 </div>
               </div>
 
@@ -129,8 +152,13 @@ const Contact = () => {
                   type="tel"
                   placeholder="Enter your phone number"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                    setFormData({ ...formData, phone: value });
+                  }}
                   required
+                  maxLength={10}
+                  pattern="[0-9]{10}"
                   className="mt-1"
                 />
               </div>

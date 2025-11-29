@@ -3,10 +3,12 @@ import { Input } from '@/components/ui/input';
 import { Label } from '@/components/ui/label';
 import { useState } from 'react';
 import { useToast } from '@/hooks/use-toast';
+import { useNavigate } from 'react-router-dom';
 import heroImage from '@/assets/hero-building.jpg';
 
 const Hero = () => {
   const { toast } = useToast();
+  const navigate = useNavigate();
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -15,11 +17,12 @@ const Hero = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    toast({
-      title: "Thank you for your interest!",
-      description: "Our team will contact you shortly.",
-    });
+    // toast({
+    //   title: "Thank you for your interest!",
+    //   description: "Our team will contact you shortly.",
+    // });
     setFormData({ name: '', email: '', phone: '' });
+    navigate('/thank-you.html');
   };
 
   return (
@@ -42,15 +45,15 @@ const Hero = () => {
             <div className="inline-block px-4 py-2 bg-accent rounded-full mb-6">
               <span className="text-sm font-semibold text-accent-foreground">NEW LAUNCH</span>
             </div>
-            
+
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
               Birla Pravaah
             </h1>
-            
+
             <p className="text-xl md:text-2xl mb-3 text-background/90">
               At Sector 71, Gurgaon
             </p>
-            
+
             <p className="text-lg mb-6 text-background/80">
               By Birla Estate
             </p>
@@ -111,8 +114,13 @@ const Hero = () => {
                   type="tel"
                   placeholder="Enter your mobile number"
                   value={formData.phone}
-                  onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+                  onChange={(e) => {
+                    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                    setFormData({ ...formData, phone: value });
+                  }}
                   required
+                  maxLength={10}
+                  pattern="[0-9]{10}"
                   className="mt-1"
                 />
               </div>

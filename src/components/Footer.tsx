@@ -10,7 +10,7 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img src="/logo.jpg" alt="Birla Pravaah Logo" className="h-16 w-auto object-contain bg-white rounded-lg p-1" />
+              <img src="/logo.png" alt="Birla Pravaah Logo" className="h-16 w-auto object-contain" />
             </div>
             <p className="text-background/70 text-sm mb-4">
               Experience luxury living in the heart of Gurgaon. A masterpiece by Birla Estate.
@@ -96,11 +96,11 @@ const Footer = () => {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-background/70">
                 <Phone className="w-4 h-4" />
-                <span>+91 98765 43210</span>
+                <span>+91 8200 801 802</span>
               </li>
               <li className="flex items-center gap-2 text-sm text-background/70">
                 <Mail className="w-4 h-4" />
-                <span>sales@birlapravaah.com</span>
+                <span>contact@elaris.consulting</span>
               </li>
             </ul>
             <div className="mt-4 p-3 bg-background/10 rounded-lg">

@@ -107,7 +107,7 @@ const Location = () => {
             <div className="bg-secondary rounded-2xl p-4 shadow-lg">
               <div className="aspect-video rounded-xl overflow-hidden">
                 <iframe
-                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3508.0697788956844!2d77.06884731508198!3d28.43456898249145!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d229b3b3b3b3b%3A0x3b3b3b3b3b3b3b3b!2sSector%2071%2C%20Gurugram%2C%20Haryana!5e0!3m2!1sen!2sin!4v1234567890123!5m2!1sen!2sin"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d7018.984993767333!2d77.0093556935791!3d28.40439260000004!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390d23ccdaf67e99%3A0x809eb3c70d04aa9c!2sBirla-Pravaah!5e0!3m2!1sen!2sin!4v1764323551736!5m2!1sen!2sin"
                   width="100%"
                   height="100%"
                   style={{ border: 0 }}
