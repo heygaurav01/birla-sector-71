@@ -1,42 +1,51 @@
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { Textarea } from '@/components/ui/textarea';
-import { useState } from 'react';
-import { useToast } from '@/hooks/use-toast';
-import { Phone, Mail, MapPin } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { Phone, Mail, MapPin } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+import { submitFormData } from "@/lib/api";
 
 const Contact = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
-    message: '',
+    name: "",
+    email: "",
+    phone: "",
   });
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
+
+    if (isSubmitting) {
+      return;
+    }
+
+    setIsSubmitting(true);
     try {
-      const response = await fetch('https://api.elaris.ltd/api/rrequest', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
+      const response = await submitFormData({
+        name: formData.name,
+        email: formData.email,
+        phone: formData.phone,
+        countryCode: "+91",
       });
 
-      if (response.ok) {
+      if (response.success) {
         toast({
           title: "Message sent successfully!",
-          description: "Our team will get back to you within 24 hours.",
+          description: response.message,
         });
-        setFormData({ name: '', email: '', phone: '', message: '' });
-        navigate('/thank-you.html');
+        setFormData({ name: "", email: "", phone: "" });
+        navigate("/thank-you.html");
       } else {
-        throw new Error('Failed to submit form');
+        toast({
+          title: "Error",
+          description: response.message,
+          variant: "destructive",
+        });
       }
     } catch (error) {
       toast({
@@ -44,6 +53,8 @@ const Contact = () => {
         description: "Something went wrong. Please try again later.",
         variant: "destructive",
       });
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -55,7 +66,8 @@ const Contact = () => {
             Get In Touch
           </h2>
           <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-            Schedule a site visit or request more information about Birla Pravaah
+            Schedule a site visit or request more information about Birla
+            Pravaah
           </p>
         </div>
 
@@ -63,10 +75,12 @@ const Contact = () => {
           {/* Contact Info */}
           <div className="space-y-8 animate-slide-up">
             <div>
-              <h3 className="font-serif text-2xl font-bold mb-6">Contact Information</h3>
+              <h3 className="font-serif text-2xl font-bold mb-6">
+                Contact Information
+              </h3>
               <p className="text-muted-foreground mb-8">
-                Our sales team is available to assist you. Reach out to us for site visits,
-                brochures, and any queries about the project.
+                Our sales team is available to assist you. Reach out to us for
+                site visits, brochures, and any queries about the project.
               </p>
             </div>
 
@@ -88,7 +102,9 @@ const Contact = () => {
                 </div>
                 <div>
                   <p className="font-semibold mb-1">Email</p>
-                  <p className="text-muted-foreground">contact@elaris.consulting</p>
+                  <p className="text-muted-foreground">
+                    contact@elaris.consulting
+                  </p>
                   {/* <p className="text-muted-foreground">contact@elaris.consulting</p> */}
                 </div>
               </div>
@@ -100,8 +116,10 @@ const Contact = () => {
                 <div>
                   <p className="font-semibold mb-1">Address</p>
                   <p className="text-muted-foreground">
-                    Birla Pravaah, Sector 71<br />
-                    Golf Course Extension Road<br />
+                    Birla Pravaah, Sector 71
+                    <br />
+                    Golf Course Extension Road
+                    <br />
                     Gurgaon, Haryana 122001
                   </p>
                 </div>
@@ -110,13 +128,17 @@ const Contact = () => {
 
             <div className="bg-primary text-primary-foreground rounded-xl p-6">
               <p className="font-semibold mb-2">Sales Office Hours</p>
-              <p className="text-primary-foreground/90">Monday - Sunday: 9:00 AM - 7:00 PM</p>
+              <p className="text-primary-foreground/90">
+                Monday - Sunday: 9:00 AM - 7:00 PM
+              </p>
             </div>
           </div>
 
           {/* Contact Form */}
           <div className="bg-background rounded-2xl shadow-lg p-8 animate-scale-in">
-            <h3 className="font-serif text-2xl font-bold mb-6">Send us a Message</h3>
+            <h3 className="font-serif text-2xl font-bold mb-6">
+              Send us a Message
+            </h3>
 
             <form onSubmit={handleSubmit} className="space-y-4">
               <div>
@@ -126,7 +148,9 @@ const Contact = () => {
                   type="text"
                   placeholder="Enter your full name"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   required
                   className="mt-1"
                 />
@@ -139,7 +163,9 @@ const Contact = () => {
                   type="email"
                   placeholder="Enter your email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   required
                   className="mt-1"
                 />
@@ -153,7 +179,9 @@ const Contact = () => {
                   placeholder="Enter your phone number"
                   value={formData.phone}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                    const value = e.target.value
+                      .replace(/\D/g, "")
+                      .slice(0, 10);
                     setFormData({ ...formData, phone: value });
                   }}
                   required
@@ -163,23 +191,18 @@ const Contact = () => {
                 />
               </div>
 
-              <div>
-                <Label htmlFor="contact-message">Message</Label>
-                <Textarea
-                  id="contact-message"
-                  placeholder="Tell us about your requirements..."
-                  value={formData.message}
-                  onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                  className="mt-1 min-h-32"
-                />
-              </div>
-
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90" size="lg">
-                Send Message
+              <Button
+                type="submit"
+                className="w-full bg-primary hover:bg-primary/90"
+                size="lg"
+                disabled={isSubmitting}
+              >
+                {isSubmitting ? "Sending..." : "Send Message"}
               </Button>
 
               <p className="text-xs text-center text-muted-foreground">
-                By submitting this form, you agree to our privacy policy and terms of service.
+                By submitting this form, you agree to our privacy policy and
+                terms of service.
               </p>
             </form>
           </div>

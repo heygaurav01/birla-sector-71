@@ -1,4 +1,11 @@
-import { Facebook, Instagram, Twitter, Linkedin, Mail, Phone } from 'lucide-react';
+import {
+  Facebook,
+  Instagram,
+  Twitter,
+  Linkedin,
+  Mail,
+  Phone,
+} from "lucide-react";
 
 const Footer = () => {
   const currentYear = new Date().getFullYear();
@@ -10,22 +17,39 @@ const Footer = () => {
           {/* Brand */}
           <div>
             <div className="flex items-center space-x-2 mb-4">
-              <img src="/logo.png" alt="Birla Pravaah Logo" className="h-16 w-auto object-contain" />
+              <img
+                src="/logo.svg"
+                alt="Birla Pravaah Logo"
+                className="h-16 w-auto object-contain"
+              />
             </div>
             <p className="text-background/70 text-sm mb-4">
-              Experience luxury living in the heart of Gurgaon. A masterpiece by Birla Estate.
+              Experience luxury living in the heart of Gurgaon. A masterpiece by
+              Birla Estate.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-background/70 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-background/70 hover:text-primary transition-colors"
+              >
                 <Facebook className="w-5 h-5" />
               </a>
-              <a href="#" className="text-background/70 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-background/70 hover:text-primary transition-colors"
+              >
                 <Instagram className="w-5 h-5" />
               </a>
-              <a href="#" className="text-background/70 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-background/70 hover:text-primary transition-colors"
+              >
                 <Twitter className="w-5 h-5" />
               </a>
-              <a href="#" className="text-background/70 hover:text-primary transition-colors">
+              <a
+                href="#"
+                className="text-background/70 hover:text-primary transition-colors"
+              >
                 <Linkedin className="w-5 h-5" />
               </a>
             </div>
@@ -36,27 +60,42 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Quick Links</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#overview" className="text-background/70 hover:text-primary transition-colors text-sm">
+                <a
+                  href="#overview"
+                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                >
                   Overview
                 </a>
               </li>
               <li>
-                <a href="#amenities" className="text-background/70 hover:text-primary transition-colors text-sm">
+                <a
+                  href="#amenities"
+                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                >
                   Amenities
                 </a>
               </li>
               <li>
-                <a href="#gallery" className="text-background/70 hover:text-primary transition-colors text-sm">
+                <a
+                  href="#gallery"
+                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                >
                   Gallery
                 </a>
               </li>
               <li>
-                <a href="#location" className="text-background/70 hover:text-primary transition-colors text-sm">
+                <a
+                  href="#location"
+                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                >
                   Location
                 </a>
               </li>
               <li>
-                <a href="#pricing" className="text-background/70 hover:text-primary transition-colors text-sm">
+                <a
+                  href="#pricing"
+                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                >
                   Pricing
                 </a>
               </li>
@@ -68,22 +107,34 @@ const Footer = () => {
             <h3 className="font-semibold text-lg mb-4">Legal</h3>
             <ul className="space-y-2">
               <li>
-                <a href="#" className="text-background/70 hover:text-primary transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                >
                   Privacy Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-background/70 hover:text-primary transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                >
                   Terms & Conditions
                 </a>
               </li>
               <li>
-                <a href="#" className="text-background/70 hover:text-primary transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                >
                   Refund Policy
                 </a>
               </li>
               <li>
-                <a href="#" className="text-background/70 hover:text-primary transition-colors text-sm">
+                <a
+                  href="#"
+                  className="text-background/70 hover:text-primary transition-colors text-sm"
+                >
                   Disclaimer
                 </a>
               </li>
@@ -105,7 +156,9 @@ const Footer = () => {
             </ul>
             <div className="mt-4 p-3 bg-background/10 rounded-lg">
               <p className="text-xs text-background/70 mb-1">RERA No:</p>
-              <p className="text-xs font-semibold">RC/REP/HARERA/GGM/1006/738/2025/109</p>
+              <p className="text-xs font-semibold">
+                RC/REP/HARERA/GGM/1006/738/2025/109
+              </p>
             </div>
           </div>
         </div>
@@ -116,7 +169,8 @@ const Footer = () => {
               © {currentYear} Birla Pravaah. All rights reserved.
             </p>
             <p className="text-xs text-background/60 text-center">
-              *Prices and availability subject to change. Please contact sales team for current offers.
+              *Prices and availability subject to change. Please contact sales
+              team for current offers.
             </p>
           </div>
         </div>

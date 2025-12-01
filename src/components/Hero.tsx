@@ -1,28 +1,45 @@
-import { Button } from '@/components/ui/button';
-import { Input } from '@/components/ui/input';
-import { Label } from '@/components/ui/label';
-import { useState } from 'react';
-import { useToast } from '@/hooks/use-toast';
-import { useNavigate } from 'react-router-dom';
-import heroImage from '@/assets/hero-building.jpg';
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Label } from "@/components/ui/label";
+import { useState } from "react";
+import { useToast } from "@/hooks/use-toast";
+import { useNavigate } from "react-router-dom";
+import heroImage from "@/assets/hero-building.jpg";
+import { submitFormData } from "@/lib/api";
 
 const Hero = () => {
   const { toast } = useToast();
   const navigate = useNavigate();
   const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    phone: '',
+    name: "",
+    email: "",
+    phone: "",
   });
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    // toast({
-    //   title: "Thank you for your interest!",
-    //   description: "Our team will contact you shortly.",
-    // });
-    setFormData({ name: '', email: '', phone: '' });
-    navigate('/thank-you.html');
+
+    const response = await submitFormData({
+      name: formData.name,
+      email: formData.email,
+      phone: formData.phone,
+      countryCode: "+91",
+    });
+
+    if (response.success) {
+      toast({
+        title: "Thank you for your interest!",
+        description: response.message,
+      });
+      navigate("/thank-you.html");
+      setFormData({ name: "", email: "", phone: "" });
+    } else {
+      toast({
+        title: "Error",
+        description: response.message,
+        variant: "destructive",
+      });
+    }
   };
 
   return (
@@ -43,7 +60,9 @@ const Hero = () => {
           {/* Left Content */}
           <div className="text-background animate-fade-in">
             <div className="inline-block px-4 py-2 bg-accent rounded-full mb-6">
-              <span className="text-sm font-semibold text-accent-foreground">NEW LAUNCH</span>
+              <span className="text-sm font-semibold text-accent-foreground">
+                NEW LAUNCH
+              </span>
             </div>
 
             <h1 className="font-serif text-5xl md:text-6xl lg:text-7xl font-bold mb-4 leading-tight">
@@ -54,9 +73,7 @@ const Hero = () => {
               At Sector 71, Gurgaon
             </p>
 
-            <p className="text-lg mb-6 text-background/80">
-              By Birla Estate
-            </p>
+            <p className="text-lg mb-6 text-background/80">By Birla Estate</p>
 
             <div className="bg-primary/20 backdrop-blur-sm rounded-lg p-6 mb-8 border border-background/20">
               <p className="text-2xl font-semibold mb-4 text-background">
@@ -75,8 +92,12 @@ const Hero = () => {
             </div>
 
             <div className="mb-8">
-              <p className="text-lg mb-2 text-background/80">Luxury 3 & 3.5 BHK Homes</p>
-              <p className="text-4xl font-bold text-accent">₹ 3.26 Cr* Onwards</p>
+              <p className="text-lg mb-2 text-background/80">
+                Luxury 3 & 3.5 BHK Homes
+              </p>
+              <p className="text-4xl font-bold text-accent">
+                ₹ 3.26 Cr* Onwards
+              </p>
             </div>
 
             <p className="text-sm text-background/70">
@@ -101,7 +122,9 @@ const Hero = () => {
                   type="text"
                   placeholder="Enter your name"
                   value={formData.name}
-                  onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, name: e.target.value })
+                  }
                   required
                   className="mt-1"
                 />
@@ -115,7 +138,9 @@ const Hero = () => {
                   placeholder="Enter your mobile number"
                   value={formData.phone}
                   onChange={(e) => {
-                    const value = e.target.value.replace(/\D/g, '').slice(0, 10);
+                    const value = e.target.value
+                      .replace(/\D/g, "")
+                      .slice(0, 10);
                     setFormData({ ...formData, phone: value });
                   }}
                   required
@@ -132,19 +157,29 @@ const Hero = () => {
                   type="email"
                   placeholder="Enter your email"
                   value={formData.email}
-                  onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                  onChange={(e) =>
+                    setFormData({ ...formData, email: e.target.value })
+                  }
                   className="mt-1"
                 />
               </div>
 
               <div className="flex items-start space-x-2">
                 <input type="checkbox" id="consent" required className="mt-1" />
-                <label htmlFor="consent" className="text-xs text-muted-foreground">
-                  I consent to the use of my provided data in accordance with the privacy policy.
+                <label
+                  htmlFor="consent"
+                  className="text-xs text-muted-foreground"
+                >
+                  I consent to the use of my provided data in accordance with
+                  the privacy policy.
                 </label>
               </div>
 
-              <Button type="submit" className="w-full bg-primary hover:bg-primary/90" size="lg">
+              <Button
+                type="submit"
+                className="w-full bg-primary hover:bg-primary/90"
+                size="lg"
+              >
                 Pre-Register Now
               </Button>
 

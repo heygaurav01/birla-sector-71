@@ -1,8 +1,10 @@
 import { Button } from "@/components/ui/button";
-import { Link } from "react-router-dom";
+import { Link, useInRouterContext } from "react-router-dom";
 import { CheckCircle } from "lucide-react";
 
 const ThankYou = () => {
+    const inRouterContext = useInRouterContext();
+
     return (
         <div className="min-h-screen flex items-center justify-center bg-background p-4">
             <div className="text-center space-y-6 max-w-md mx-auto animate-fade-in">
@@ -21,11 +23,13 @@ const ThankYou = () => {
                 </p>
 
                 <div className="pt-6">
-                    <Link to="/">
-                        <Button size="lg" className="bg-primary hover:bg-primary/90">
-                            Back to Home
-                        </Button>
-                    </Link>
+                    <Button size="lg" className="bg-primary hover:bg-primary/90" asChild>
+                        {inRouterContext ? (
+                            <Link to="/">Back to Home</Link>
+                        ) : (
+                            <a href="/">Back to Home</a>
+                        )}
+                    </Button>
                 </div>
             </div>
         </div>
