@@ -101,7 +101,7 @@ const Hero = () => {
             </div>
 
             <p className="text-sm text-background/70">
-              RERA No: RC/REP/HARERA/GGM/1006/738/2025/109
+              PROJECT RERA No: RC/REP/HARERA/GGM/1006/738/2025/109 https://haryanarera.gov.in/
             </p>
           </div>
 
@@ -164,16 +164,7 @@ const Hero = () => {
                 />
               </div>
 
-              <div className="flex items-start space-x-2">
-                <input type="checkbox" id="consent" required className="mt-1" />
-                <label
-                  htmlFor="consent"
-                  className="text-xs text-muted-foreground"
-                >
-                  I consent to the use of my provided data in accordance with
-                  the privacy policy.
-                </label>
-              </div>
+
 
               <Button
                 type="submit"

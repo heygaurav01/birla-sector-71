@@ -133,21 +133,7 @@ const EnquiryModal = ({
             />
           </div>
 
-          <div className="flex items-start space-x-2">
-            <input
-              type="checkbox"
-              id="modal-consent"
-              required
-              className="mt-1"
-            />
-            <label
-              htmlFor="modal-consent"
-              className="text-xs text-muted-foreground"
-            >
-              I consent to the use of my provided data in accordance with the
-              privacy policy.
-            </label>
-          </div>
+
 
           <Button
             type="submit"

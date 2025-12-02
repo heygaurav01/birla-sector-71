@@ -108,7 +108,7 @@ const Footer = () => {
             <ul className="space-y-2">
               <li>
                 <a
-                  href="#"
+                  href="/Disclaimer.html"
                   className="text-background/70 hover:text-primary transition-colors text-sm"
                 >
                   Privacy Policy
@@ -119,7 +119,7 @@ const Footer = () => {
                   href="#"
                   className="text-background/70 hover:text-primary transition-colors text-sm"
                 >
-                  Terms & Conditions
+
                 </a>
               </li>
               <li>
@@ -127,12 +127,12 @@ const Footer = () => {
                   href="#"
                   className="text-background/70 hover:text-primary transition-colors text-sm"
                 >
-                  Refund Policy
+
                 </a>
               </li>
               <li>
                 <a
-                  href="#"
+                  href="/Disclaimer.html"
                   className="text-background/70 hover:text-primary transition-colors text-sm"
                 >
                   Disclaimer
@@ -155,9 +155,9 @@ const Footer = () => {
               </li>
             </ul>
             <div className="mt-4 p-3 bg-background/10 rounded-lg">
-              <p className="text-xs text-background/70 mb-1">RERA No:</p>
+              <p className="text-xs text-background/70 mb-1">PROJECT RERA No:</p>
               <p className="text-xs font-semibold">
-                RC/REP/HARERA/GGM/1006/738/2025/109
+                RC/REP/HARERA/GGM/1006/738/2025/109 https://haryanarera.gov.in/
               </p>
             </div>
           </div>
@@ -165,9 +165,14 @@ const Footer = () => {
 
         <div className="border-t border-background/20 pt-8">
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
-            <p className="text-sm text-background/70">
-              © {currentYear} Birla Pravaah. All rights reserved.
-            </p>
+            <div className="text-sm text-background/70">
+              <p>© {currentYear} Birla Pravaah. All rights reserved.</p>
+              <div className="mt-1">
+                <a href="/Disclaimer.html" className="hover:text-primary transition-colors underline">
+                  Disclaimer & Privacy Policy
+                </a>
+              </div>
+            </div>
             <p className="text-xs text-background/60 text-center">
               *Prices and availability subject to change. Please contact sales
               team for current offers.
